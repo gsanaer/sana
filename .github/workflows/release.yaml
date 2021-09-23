@@ -8,7 +8,7 @@ on:
       - 'v*.*.*'
 
 jobs:
-  goreleaser:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Go
@@ -30,7 +30,7 @@ jobs:
       - name: Binary
         run: make tee && make binary
       - uses: docker/setup-buildx-action@v1
-      - run: docker build -t ethsana/ant:$GITHUB_REF
-      - run: docker images
+      - run: echo ${{ github.ref }}
+      
 
       
